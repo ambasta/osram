@@ -1,0 +1,3 @@
+#ifndef OSRAM_UTIL_INTEGER_RANGE
+#define OSRAM_UTIL_INTEGER_RANGE
+#endif

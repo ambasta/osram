@@ -1,0 +1,3 @@
+/home/amitprakash/osram/build/CMakeFiles/rebuild_cache.dir
+/home/amitprakash/osram/build/CMakeFiles/edit_cache.dir
+/home/amitprakash/osram/build/CMakeFiles/osrammain.dir
