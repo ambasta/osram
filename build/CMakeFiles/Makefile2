@@ -72,7 +72,7 @@ CMAKE_BINARY_DIR = /home/amitprakash/osram/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/osrammain.dir/all
+all: CMakeFiles/osram.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/osrammain.dir/clean
+clean: CMakeFiles/osram.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osrammain.dir
+# Target rules for target CMakeFiles/osram.dir
 
 # All Build rule for target.
-CMakeFiles/osrammain.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/amitprakash/osram/build/CMakeFiles --progress-num=1,2 "Built target osrammain"
-.PHONY : CMakeFiles/osrammain.dir/all
+CMakeFiles/osram.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/amitprakash/osram/build/CMakeFiles --progress-num=1,2 "Built target osram"
+.PHONY : CMakeFiles/osram.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/osrammain.dir/rule: cmake_check_build_system
+CMakeFiles/osram.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/amitprakash/osram/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/osrammain.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/osram.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/amitprakash/osram/build/CMakeFiles 0
-.PHONY : CMakeFiles/osrammain.dir/rule
+.PHONY : CMakeFiles/osram.dir/rule
 
 # Convenience name for target.
-osrammain: CMakeFiles/osrammain.dir/rule
+osram: CMakeFiles/osram.dir/rule
 
-.PHONY : osrammain
+.PHONY : osram
 
 # clean rule for target.
-CMakeFiles/osrammain.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/clean
-.PHONY : CMakeFiles/osrammain.dir/clean
+CMakeFiles/osram.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/clean
+.PHONY : CMakeFiles/osram.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

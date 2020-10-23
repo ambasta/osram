@@ -20,7 +20,7 @@ public:
 
   OSRAM &operator=(OSRAM &&) noexcept;
 
-  engine::Status Table(const engine::api::TableParameters &parameters) const;
+  engine::Status Table(const engine::api::TableParameters &) const;
 };
 }; // namespace osram
 #endif

@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named osrammain
+# Target rules for targets named osram
 
 # Build rule for target.
-osrammain: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 osrammain
-.PHONY : osrammain
+osram: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 osram
+.PHONY : osram
 
 # fast build rule for target.
-osrammain/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/build
-.PHONY : osrammain/fast
+osram/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/build
+.PHONY : osram/fast
 
 src/main.o: src/main.cxx.o
 
@@ -148,7 +148,7 @@ src/main.o: src/main.cxx.o
 
 # target to build an object file
 src/main.cxx.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/src/main.cxx.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/src/main.cxx.o
 .PHONY : src/main.cxx.o
 
 src/main.i: src/main.cxx.i
@@ -157,7 +157,7 @@ src/main.i: src/main.cxx.i
 
 # target to preprocess a source file
 src/main.cxx.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/src/main.cxx.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/src/main.cxx.i
 .PHONY : src/main.cxx.i
 
 src/main.s: src/main.cxx.s
@@ -166,7 +166,7 @@ src/main.s: src/main.cxx.s
 
 # target to generate assembly for a file
 src/main.cxx.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/osrammain.dir/build.make CMakeFiles/osrammain.dir/src/main.cxx.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/osram.dir/build.make CMakeFiles/osram.dir/src/main.cxx.s
 .PHONY : src/main.cxx.s
 
 # Help Target
@@ -177,7 +177,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... osrammain"
+	@echo "... osram"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

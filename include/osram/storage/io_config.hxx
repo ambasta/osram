@@ -41,7 +41,7 @@ public:
         optional_input_files(optional_input_files), output_files(output_files) {
   }
 
-  bool isValid() const;
+  bool is_valid() const;
 
   std::filesystem::path getPath(std::string_view &filename) const {
     if (!is_configured(filename, required_input_files) &&
