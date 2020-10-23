@@ -1,6 +1,6 @@
 ## Open Source Routing Machine
 
-High performance routing engine written in C++2a designed to run on OpenStreetMap data.
+High performance routing engine written in C++2a designed to run on OpenStreetMap data. The objective of this project is to use as few external dependencies outside of STL and separation of the C++ library from the API and the NodeJS client provided by upstream to allow for easier and simpler embedding of the project.
 
 The following services are available via C++ library interface:
 - Table - Computes the duration or distances of the fastest route between all pairs of supplied coordinates
