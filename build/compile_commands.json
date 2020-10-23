@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/amitprakash/osram/build",
-  "command": "/usr/bin/c++  -I/home/amitprakash/osram/include -std=gnu++2a -o CMakeFiles/osram.dir/src/main.cxx.o -c /home/amitprakash/osram/src/main.cxx",
-  "file": "/home/amitprakash/osram/src/main.cxx"
-}
-]
