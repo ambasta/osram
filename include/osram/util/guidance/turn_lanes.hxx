@@ -12,7 +12,7 @@ public:
   LaneId lanes_in_turn, first_lane_from_the_right;
 
   LaneTuple();
-  LaneTuple(const LaneId lanes_in_turn, const LaneId first_lane_from_the_right);
+  LaneTuple(const LaneId, const LaneId);
 
   bool operator==(const LaneTuple) const;
 };

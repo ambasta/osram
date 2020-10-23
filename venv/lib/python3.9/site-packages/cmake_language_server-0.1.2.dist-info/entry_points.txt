@@ -1,0 +1,4 @@
+[console_scripts]
+cmake-format=cmake_language_server.formatter:main
+cmake-language-server=cmake_language_server.server:main
+

@@ -14,6 +14,8 @@ public:
 
   virtual ~BaseDataFacade() {}
 
+  virtual std::uint32_t get_checksum() const = 0;
+
   virtual std::vector<PhantomNodeWithDistance>
   nearest_phantom_nodes_in_range(const util::Coordinate, const float, const int,
                                  const int, const Approach,

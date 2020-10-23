@@ -1,10 +1,15 @@
 cmake_minimum_required(VERSION 3.10)
 
-PROJECT(osram LANGUAGES CXX)
+project(osram LANGUAGES CXX)
 
-SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+list(INSERT CMAKE_MODULE_PATH 0 ${CMAKE_SOURCE_DIR}/cmake)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
-Set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(${PROJECT_NAME} src/main.cxx)
-target_include_directories(${PROJECT_NAME} PUBLIC include/)
+add_subdirectory(src)
+
+# # Add Tests
+# enable_testing()
+# add_subdirectory(tests)

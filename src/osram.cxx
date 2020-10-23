@@ -20,9 +20,9 @@ OSRAM::OSRAM(engine::EngineConfig &config) {
     m_engine = std::make_unique<engine::Engine<CH>>(config);
     break;
 
-  case engine::EngineConfig::Algorithm::MLD:
+  /* case engine::EngineConfig::Algorithm::MLD:
     m_engine = std::make_unique<engine::Engine<MLD>>(config);
-    break;
+    break; */
   default:
     std::runtime_error("Algorithm not implemented");
   }

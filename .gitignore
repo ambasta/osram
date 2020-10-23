@@ -31,5 +31,10 @@
 *.out
 *.app
 
+# Build and Cache directories
 build/
 .cache/
+
+# Remove venv
+.venv
+.venv/*

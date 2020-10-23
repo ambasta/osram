@@ -12,6 +12,11 @@ namespace osram {
 constexpr const double COORDINATE_PRECISION = 1e6;
 
 namespace util {
+using FixedLatitude = std::int32_t;
+using FixedLongitude = std::int32_t;
+using FloatLatitude = double;
+using FloatLongitude = double;
+
 inline std::int32_t toFixed(const double floating) {
   const auto fixed =
       static_cast<std::int32_t>(std::round(floating * COORDINATE_PRECISION));

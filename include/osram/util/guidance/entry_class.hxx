@@ -14,9 +14,9 @@ private:
 public:
   constexpr EntryClass() : enabled_entries_flags(0) {}
 
-  bool activate(std::uint32_t index);
+  bool activate(std::uint32_t);
 
-  bool allows_entry(std::uint32_t index) const;
+  bool allows_entry(std::uint32_t) const;
 
   bool operator==(const EntryClass &) const;
 
