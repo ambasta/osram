@@ -1,3 +1,5 @@
+#ifndef OSRAM_STORAGE_STORAGE_CONFIG
+#define OSRAM_STORAGE_STORAGE_CONFIG
 #include <osram/storage/io_config.hxx>
 
 namespace osram {
@@ -19,3 +21,4 @@ struct StorageConfig final : IOConfig {
 };
 } // namespace storage
 } // namespace osram
+#endif

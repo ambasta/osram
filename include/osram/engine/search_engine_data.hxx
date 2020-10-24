@@ -1,8 +1,8 @@
 #ifndef OSRAM_ENGINE_SEARCH_ENGINE_DATA
 #define OSRAM_ENGINE_SEARCH_ENGINE_DATA
 
-#include "osram/util/typedefs.hxx"
 #include <osram/engine/algorithm.hxx>
+#include <osram/util/typedefs.hxx>
 
 namespace osram {
 namespace engine {

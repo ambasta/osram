@@ -3,6 +3,7 @@
 
 #include <osram/engine/algorithm.hxx>
 #include <osram/engine/datafacade/algorithm_datafacade.hxx>
+#include <osram/engine/datafacade/contiguous_block_allocator.hxx>
 #include <osram/engine/datafacade/datafacade_base.hxx>
 
 namespace osram {

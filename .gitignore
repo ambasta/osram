@@ -36,5 +36,5 @@ build/
 .cache/
 
 # Remove venv
-.venv
-.venv/*
+venv
+venv/*
