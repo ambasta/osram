@@ -29,10 +29,7 @@ private:
 public:
   explicit Engine(const EngineConfig &config)
       : table_plugin(config.max_locations_distance_table) {
-    if (config.use_shared_memory)
-      facade_provider =
-          std::make_unique<WatchingProvider<T>>(config.dataset_name);
-    else if (config.use_mmap) {
+    if (config.use_mmap) {
       facade_provider =
           std::make_unique<ExternalProvider<T>>(config.storage_config);
     } else {
