@@ -21,7 +21,7 @@ private:
   }
 
 protected:
-  void useDefaultOutputNames(const std::filesystem::path &base) {
+  void use_default_output_names(const std::filesystem::path &base) {
     std::array<std::string, 6> known_extensions{
         {".osm.bz2", ".osm.pbf", ".osm.xml", ".pbf", ".osm", ".osrm"}};
     base_path = base;

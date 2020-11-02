@@ -16,7 +16,7 @@ struct StorageConfig final : IOConfig {
                   ".osrm.tld", ".osrm.tls", ".osrm.partition"},
                  {}) {}
   StorageConfig(const std::filesystem::path &base) : StorageConfig() {
-    IOConfig::useDefaultOutputNames(base);
+    IOConfig::use_default_output_names(base);
   }
 };
 } // namespace storage

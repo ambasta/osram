@@ -7,8 +7,7 @@
 namespace osram {
 namespace extractor {
 using TravelMode = std::uint8_t;
-
-const constexpr TravelMode TRAVEL_MODE_INACCESSIBLE = 0;
+const constexpr osram::extractor::TravelMode TRAVEL_MODE_INACCESSIBLE = 0;
 const constexpr TravelMode TRAVEL_MODE_DRIVING = 1;
 const constexpr TravelMode TRAVEL_MODE_CYCLING = 2;
 const constexpr TravelMode TRAVEL_MODE_WALKING = 3;

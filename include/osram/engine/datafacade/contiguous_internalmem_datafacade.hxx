@@ -5,7 +5,14 @@
 #include <osram/engine/datafacade/algorithm_datafacade.hxx>
 #include <osram/engine/datafacade/contiguous_block_allocator.hxx>
 #include <osram/engine/datafacade/datafacade_base.hxx>
+#include <osram/extractor/node_data_container.hxx>
 #include <osram/extractor/profile_properties.hxx>
+#include <osram/extractor/segment_data.hxx>
+#include <osram/extractor/turn_lane_types.hxx>
+#include <osram/guidance/turn_data_container.hxx>
+#include <osram/util/typedefs.hxx>
+
+#include <vector>
 
 namespace osram {
 namespace engine {
@@ -20,14 +27,16 @@ class ContiguousInternalMemoryDataFacadeBase : public BaseDataFacade {
 private:
   extractor::ProfileProperties *m_profile_properties;
   extractor::ClassData exclude_mask;
-  extractor::PackedOSMIDsView m_osmnodeid_list;
+
+  std::vector<OSMNodeId> m_osmnodeid_list;
   std::vector<util::Coordinate> m_coordinate_list;
   std::vector<std::uint32_t> m_lane_description_offsets;
-  std::vector<extractor::TurnLaneType::Mask> m_lane_description_masks;
+  std::vector<extractor::TurnLaneType::LaneType> m_lane_description_enums;
   std::vector<TurnPenalty> m_turn_weight_penalties, m_turn_duration_penalties;
-  extractor::SegmentDataView segment_data;
-  extractor::EdgeBasedNodeDataView edge_based_node_data;
-  guidance::TurnDataView turn_data;
+  std::vector<extractor::SegmentData> segment_data;
+  std::vector<extractor::EdgeBasedNodeData> edge_based_node_data;
+  std::vector<guidance::TurnDataContainer> turn_data;
+
   StaticRtree<BaseDataFacade::RTreeLeaf, storage::Ownership::View>
       m_static_rtree;
   std::unique_ptr<GeoSpatialQuery<

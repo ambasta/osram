@@ -1,5 +1,5 @@
+add_subdirectory(extractor)
 add_subdirectory(util)
-# add_subdirectory(extractor)
 # add_subdirectory(updater)
 add_subdirectory(storage)
 add_subdirectory(engine)
