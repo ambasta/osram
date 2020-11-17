@@ -3,6 +3,15 @@
 
 #include <osram/engine/approach.hxx>
 #include <osram/engine/phantom_node.hxx>
+
+// #include <osram/contractor/query_edge.hxx>
+
+#include <osram/extractor/class_data.hxx>
+#include <osram/extractor/edge_based_node_segment.hxx>
+
+#include <osram/extractor/segment_data_container.hxx>
+#include <osram/extractor/turn_lane_types.hxx>
+
 #include <osram/util/coordinate.hxx>
 
 namespace osram {
@@ -10,6 +19,8 @@ namespace engine {
 namespace datafacade {
 class BaseDataFacade {
 public:
+  using RTreeLeaf = extractor::EdgeBasedNodeSegment;
+
   BaseDataFacade() {}
 
   virtual ~BaseDataFacade() {}

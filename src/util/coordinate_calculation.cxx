@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cmath>
+#include <cstdint>
 #include <iterator>
 #include <limits>
 #include <vector>
@@ -32,6 +33,21 @@ double haversine_distance(const Coordinate first, const Coordinate second) {
   const double charv =
       2. * std::atan2(std::sqrt(aharv), std::sqrt(1.0 - aharv));
   return detail::EARTH_RADIUS * charv;
+}
+
+std::uint64_t squared_euclidean_distance(const Coordinate lhs,
+                                         const Coordinate rhs) {
+  std::int64_t distance_lon =
+      static_cast<std::uint32_t>(lhs.longitude - rhs.longitude);
+  std::int64_t distance_lat =
+      static_cast<std::uint32_t>(lhs.latitude - rhs.latitude);
+
+  std::int64_t squared_distance_lon = distance_lon * distance_lon;
+  std::int64_t squared_distance_lat = distance_lat * distance_lat;
+
+  std::uint64_t result =
+      static_cast<std::uint64_t>(squared_distance_lon + squared_distance_lat);
+  return result;
 }
 } // namespace coordinate_calculation
 } // namespace util

@@ -2,15 +2,18 @@
 #define OSRAM_ENGINE_DATAFACADE_CONTIGUOUS_INTERNALMEM_DATAFACADE
 
 #include <osram/engine/algorithm.hxx>
+#include <osram/engine/approach.hxx>
+#include <osram/engine/geospatial_query.hxx>
+
 #include <osram/engine/datafacade/algorithm_datafacade.hxx>
 #include <osram/engine/datafacade/contiguous_block_allocator.hxx>
 #include <osram/engine/datafacade/datafacade_base.hxx>
-#include <osram/extractor/node_data_container.hxx>
-#include <osram/extractor/profile_properties.hxx>
-#include <osram/extractor/segment_data.hxx>
-#include <osram/extractor/turn_lane_types.hxx>
-#include <osram/guidance/turn_data_container.hxx>
-#include <osram/util/typedefs.hxx>
+
+#include <osram/storage/shared_datatype.hxx>
+#include <osram/storage/shared_memory_ownership.hxx>
+#include <osram/storage/view_factory.hxx>
+
+#include <osram/util/static_rtree.hxx>
 
 #include <vector>
 
@@ -25,22 +28,22 @@ class ContiguousInternalMemoryAlgorithmDataFacade<CH>
 
 class ContiguousInternalMemoryDataFacadeBase : public BaseDataFacade {
 private:
-  extractor::ProfileProperties *m_profile_properties;
   extractor::ClassData exclude_mask;
+  extractor::ProfileProperties *m_profile_properties;
 
   std::vector<OSMNodeId> m_osmnodeid_list;
   std::vector<util::Coordinate> m_coordinate_list;
   std::vector<std::uint32_t> m_lane_description_offsets;
   std::vector<extractor::TurnLaneType::LaneType> m_lane_description_enums;
   std::vector<TurnPenalty> m_turn_weight_penalties, m_turn_duration_penalties;
-  std::vector<extractor::SegmentData> segment_data;
-  std::vector<extractor::EdgeBasedNodeData> edge_based_node_data;
-  std::vector<guidance::TurnDataContainer> turn_data;
+  extractor::SegmentDataView segment_data;
+  extractor::EdgeBasedNodeDataView edge_based_node_data;
+  guidance::TurnDataView turn_data;
 
-  StaticRtree<BaseDataFacade::RTreeLeaf, storage::Ownership::View>
+  util::StaticRTree<BaseDataFacade::RTreeLeaf, storage::Ownership::View>
       m_static_rtree;
   std::unique_ptr<GeoSpatialQuery<
-      StaticRtree<BaseDataFacade::RTreeLeaf, storage::Ownership::View>,
+      util::StaticRTree<BaseDataFacade::RTreeLeaf, storage::Ownership::View>,
       BaseDataFacade>>
       m_geospatial_query;
   std::uint32_t m_checksum;

@@ -3,6 +3,7 @@
 
 #include <array>
 #include <cstdint>
+#include <type_traits>
 
 namespace osram {
 namespace util {
@@ -29,7 +30,7 @@ public:
 static_assert(sizeof(FingerPrint) == 8, "FingerPrint has unexpected size");
 static_assert(std::is_trivial<FingerPrint>::value,
               "FingerPrint needs to be trivial");
-static_assert(std::is_pod<FingerPrint>::value, "FingerPrint needs to be a POD");
+static_assert(std::is_trivial<FingerPrint>::value, "FingerPrint needs to be a trivial");
 } // namespace util
 } // namespace osram
 #endif

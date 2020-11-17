@@ -17,13 +17,13 @@ using FixedLongitude = std::int32_t;
 using FloatLatitude = double;
 using FloatLongitude = double;
 
-inline std::int32_t toFixed(const double floating) {
+inline std::int32_t to_fixed(const double floating) {
   const auto fixed =
       static_cast<std::int32_t>(std::round(floating * COORDINATE_PRECISION));
   return std::int32_t(fixed);
 }
 
-inline double toFloating(const std::int32_t fixed) {
+inline double to_floating(const std::int32_t fixed) {
   const auto floating = static_cast<double>(fixed) / COORDINATE_PRECISION;
   return double{floating};
 }
@@ -40,7 +40,7 @@ struct Coordinate {
   Coordinate(const FloatCoordinate &);
 
   Coordinate(const double longitude, const double latitude)
-      : Coordinate(toFixed(longitude), toFixed(latitude)) {}
+      : Coordinate(to_fixed(longitude), to_fixed(latitude)) {}
 
   Coordinate(const std::int32_t longitude, const std::int32_t latitude)
       : longitude(longitude), latitude(latitude) {}
@@ -70,8 +70,8 @@ struct FloatCoordinate {
         latitude{std::numeric_limits<double>::min()} {}
 
   FloatCoordinate(const Coordinate other)
-      : FloatCoordinate(toFloating(other.longitude),
-                        toFloating(other.latitude)) {}
+      : FloatCoordinate(to_floating(other.longitude),
+                        to_floating(other.latitude)) {}
 
   FloatCoordinate(const double longitude, const double latitude)
       : longitude(longitude), latitude(latitude) {}
@@ -85,7 +85,7 @@ bool operator==(const Coordinate, const Coordinate);
 bool operator==(const FloatCoordinate, const FloatCoordinate);
 
 inline Coordinate::Coordinate(const FloatCoordinate &other)
-    : Coordinate(toFixed(other.longitude), toFixed(other.latitude)) {}
+    : Coordinate(to_fixed(other.longitude), to_fixed(other.latitude)) {}
 } // namespace util
 } // namespace osram
 #endif

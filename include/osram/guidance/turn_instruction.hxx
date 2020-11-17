@@ -7,59 +7,57 @@
 
 namespace osram {
 namespace guidance {
-namespace DirectionModifier {
-typedef std::uint8_t Enum;
-const constexpr Enum UTurn = 0;
-const constexpr Enum SharpRight = 1;
-const constexpr Enum Right = 2;
-const constexpr Enum SlightRight = 3;
-const constexpr Enum Straight = 4;
-const constexpr Enum SlightLeft = 5;
-const constexpr Enum Left = 6;
-const constexpr Enum SharpLeft = 7;
-const constexpr Enum MaxDirectionModifier = 8;
-} // namespace DirectionModifier
+enum DirectionModifier {
+  UTurn = 0,
+  SharpRight = 1,
+  Right = 2,
+  SlightRight = 3,
+  Straight = 4,
+  SlightLeft = 5,
+  Left = 6,
+  SharpLeft = 7,
+  MaxDirectionModifier = 8,
+};
 
-namespace TurnType {
-typedef std::uint8_t Enum;
-const constexpr Enum Invalid = 0;
-const constexpr Enum NewName = 1;
-const constexpr Enum Continue = 2;
-const constexpr Enum Turn = 3;
-const constexpr Enum Merge = 4;
-const constexpr Enum OnRamp = 5;
-const constexpr Enum OffRamp = 6;
-const constexpr Enum Fork = 7;
-const constexpr Enum EndOfRoad = 8;
-const constexpr Enum Notification = 9;
-const constexpr Enum EnterRoundabout = 10;
-const constexpr Enum EnterAndExitRoundabout = 11;
-const constexpr Enum EnterRotary = 12;
-const constexpr Enum EnterAndExitRotary = 13;
-const constexpr Enum EnterRoundaboutIntersection = 14;
-const constexpr Enum EnterAndExitRoundaboutIntersection = 15;
+enum TurnType {
+  Invalid = 0,
+  NewName = 1,
+  Continue = 2,
+  Turn = 3,
+  Merge = 4,
+  OnRamp = 5,
+  OffRamp = 6,
+  Fork = 7,
+  EndOfRoad = 8,
+  Notification = 9,
+  EnterRoundabout = 10,
+  EnterAndExitRoundabout = 11,
+  EnterRotary = 12,
+  EnterAndExitRotary = 13,
+  EnterRoundaboutIntersection = 14,
+  EnterAndExitRoundaboutIntersection = 15,
 
-const constexpr Enum NoTurn = 17;
-const constexpr Enum Suppressed = 18;
-const constexpr Enum EnterRoundaboutAtExit = 19;
-const constexpr Enum ExitRoundabout = 20;
-const constexpr Enum EnterRotaryAtExit = 21;
-const constexpr Enum ExitRotary = 22;
-const constexpr Enum EnterRoundaboutIntersectionAtExit = 23;
-const constexpr Enum ExitRoundaboutIntersection = 24;
-const constexpr Enum StayOnRoundabout = 25;
-const constexpr Enum Sliproad = 26;
+  NoTurn = 17,
+  Suppressed = 18,
+  EnterRoundaboutAtExit = 19,
+  ExitRoundabout = 20,
+  EnterRotaryAtExit = 21,
+  ExitRotary = 22,
+  EnterRoundaboutIntersectionAtExit = 23,
+  ExitRoundaboutIntersection = 24,
+  StayOnRoundabout = 25,
+  Sliproad = 26,
 
-const constexpr Enum MaxTurnType = 27;
-} // namespace TurnType
+  MaxTurnType = 27,
+};
 
 struct TurnInstruction {
-  TurnType::Enum type : 5;
-  DirectionModifier::Enum direction_modifier : 3;
+  TurnType type;
+  DirectionModifier direction_modifier;
 
-  TurnInstruction(const TurnType::Enum type = TurnType::Invalid,
-                  const DirectionModifier::Enum direction_modifier =
-                      DirectionModifier::UTurn)
+  TurnInstruction(
+      const TurnType type = TurnType::Invalid,
+      const DirectionModifier direction_modifier = DirectionModifier::UTurn)
       : type(type), direction_modifier(direction_modifier) {}
 
   bool is_uturn() const {
@@ -75,25 +73,22 @@ struct TurnInstruction {
     return {TurnType::NoTurn, DirectionModifier::UTurn};
   }
 
-  static TurnInstruction
-  REMAIN_ROUNDABOUT(const RoundaboutType,
-                    const DirectionModifier::Enum modifier) {
+  static TurnInstruction REMAIN_ROUNDABOUT(const RoundaboutType,
+                                           const DirectionModifier modifier) {
     return {TurnType::StayOnRoundabout, modifier};
   }
 
-  static TurnInstruction
-  ENTER_ROUNDABOUT(const RoundaboutType roundabout_type,
-                   const DirectionModifier::Enum modifier) {
-    const constexpr TurnType::Enum enter_instruction[] = {
+  static TurnInstruction ENTER_ROUNDABOUT(const RoundaboutType roundabout_type,
+                                          const DirectionModifier modifier) {
+    const constexpr TurnType enter_instruction[] = {
         TurnType::Invalid, TurnType::EnterRoundabout, TurnType::EnterRotary,
         TurnType::EnterRoundaboutIntersection};
     return {enter_instruction[static_cast<int>(roundabout_type)], modifier};
   }
 
-  static TurnInstruction
-  EXIT_ROUNDABOUT(const RoundaboutType roundabout_type,
-                  const DirectionModifier::Enum modifier) {
-    const constexpr TurnType::Enum exit_instruction[] = {
+  static TurnInstruction EXIT_ROUNDABOUT(const RoundaboutType roundabout_type,
+                                         const DirectionModifier modifier) {
+    const constexpr TurnType exit_instruction[] = {
         TurnType::Invalid, TurnType::ExitRoundabout, TurnType::ExitRotary,
         TurnType::ExitRoundaboutIntersection};
     return {exit_instruction[static_cast<int>(roundabout_type)], modifier};
@@ -101,8 +96,8 @@ struct TurnInstruction {
 
   static TurnInstruction
   ENTER_AND_EXIT_ROUNDABOUT(const RoundaboutType roundabout_type,
-                            const DirectionModifier::Enum modifier) {
-    const constexpr TurnType::Enum exit_instruction[] = {
+                            const DirectionModifier modifier) {
+    const constexpr TurnType exit_instruction[] = {
         TurnType::Invalid, TurnType::EnterAndExitRoundabout,
         TurnType::EnterAndExitRotary,
         TurnType::EnterAndExitRoundaboutIntersection};
@@ -111,21 +106,21 @@ struct TurnInstruction {
 
   static TurnInstruction
   ENTER_ROUNDABOUT_AT_EXIT(const RoundaboutType roundabout_type,
-                           const DirectionModifier::Enum modifier) {
-    const constexpr TurnType::Enum enter_instruction[] = {
+                           const DirectionModifier modifier) {
+    const constexpr TurnType enter_instruction[] = {
         TurnType::Invalid, TurnType::EnterRoundaboutAtExit,
         TurnType::EnterRotaryAtExit,
         TurnType::EnterRoundaboutIntersectionAtExit};
     return {enter_instruction[static_cast<int>(roundabout_type)], modifier};
   }
 
-  static TurnInstruction SUPPRESSED(const DirectionModifier::Enum modifier) {
+  static TurnInstruction SUPPRESSED(const DirectionModifier modifier) {
     return {TurnType::Suppressed, modifier};
   }
 };
 
-static_assert(sizeof(TurnInstruction) == 1,
-              "TurnInstruction does not fit a byte");
+static_assert(sizeof(TurnInstruction) == 8,
+              "TurnInstruction does not fit 8 bytes");
 
 inline bool operator!=(const TurnInstruction lhs, const TurnInstruction rhs) {
   return lhs.type != rhs.type ||
@@ -138,8 +133,7 @@ inline bool operator==(const TurnInstruction lhs, const TurnInstruction rhs) {
 }
 
 inline bool has_roundabout_type(const TurnInstruction instruction) {
-  using namespace guidance::TurnType;
-  const constexpr TurnType::Enum valid_types[] = {
+  const constexpr TurnType valid_types[] = {
       TurnType::EnterRoundabout,
       TurnType::EnterAndExitRoundabout,
       TurnType::EnterRotary,
@@ -203,8 +197,7 @@ inline bool has_ramp_type(const guidance::TurnInstruction instruction) {
          instruction.type == guidance::TurnType::OnRamp;
 }
 
-inline guidance::DirectionModifier::Enum
-get_turn_direction(const double angle) {
+inline guidance::DirectionModifier get_turn_direction(const double angle) {
   if (angle > 0 && angle < 60)
     return guidance::DirectionModifier::SharpRight;
   if (angle >= 60 && angle < 140)
@@ -222,9 +215,9 @@ get_turn_direction(const double angle) {
   return guidance::DirectionModifier::UTurn;
 }
 
-inline guidance::DirectionModifier::Enum
-mirror_direction_modifier(const guidance::DirectionModifier::Enum modifier) {
-  const constexpr guidance::DirectionModifier::Enum results[] = {
+inline guidance::DirectionModifier
+mirror_direction_modifier(const guidance::DirectionModifier modifier) {
+  const constexpr guidance::DirectionModifier results[] = {
       guidance::DirectionModifier::UTurn,
       guidance::DirectionModifier::SharpLeft,
       guidance::DirectionModifier::Left,
@@ -270,8 +263,7 @@ inline bool is_right_turn(const guidance::TurnInstruction instruction) {
   }
 }
 
-inline DirectionModifier::Enum
-bearing_to_direction_modifier(const double bearing) {
+inline DirectionModifier bearing_to_direction_modifier(const double bearing) {
   if (bearing < 135) {
     return guidance::DirectionModifier::Right;
   }
@@ -324,7 +316,7 @@ const constexpr TurnTypeName turn_type_names[] = {
 
 } // namespace detail
 
-inline std::string instruction_type_to_string(const TurnType::Enum type) {
+inline std::string instruction_type_to_string(const TurnType type) {
   static_assert((sizeof(detail::turn_type_names) + 1) /
                         sizeof(detail::turn_type_names[0]) >=
                     TurnType::MaxTurnType,
@@ -332,8 +324,7 @@ inline std::string instruction_type_to_string(const TurnType::Enum type) {
   return detail::turn_type_names[static_cast<std::size_t>(type)].external_name;
 }
 
-inline std::string
-internal_instruction_type_to_string(const TurnType::Enum type) {
+inline std::string internal_instruction_type_to_string(const TurnType type) {
   static_assert((sizeof(detail::turn_type_names) + 1) /
                         sizeof(detail::turn_type_names[0]) >=
                     TurnType::MaxTurnType,
@@ -342,7 +333,7 @@ internal_instruction_type_to_string(const TurnType::Enum type) {
 }
 
 inline std::string
-instruction_modifier_to_string(const DirectionModifier::Enum modifier) {
+instruction_modifier_to_string(const DirectionModifier modifier) {
   static_assert((sizeof(detail::modifier_names) + 1) /
                         sizeof(detail::modifier_names[0]) >=
                     DirectionModifier::MaxDirectionModifier,

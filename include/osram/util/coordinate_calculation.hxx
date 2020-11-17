@@ -20,6 +20,26 @@ inline double radians_to_degree(const double radian) {
 }
 } // namespace detail
 double haversine_distance(const Coordinate, const Coordinate);
+
+std::uint64_t squared_euclidean_distance(const Coordinate, const Coordinate);
+
+double perpendicular_distance(const Coordinate, const Coordinate,
+                              const Coordinate);
+
+double perpendicular_distance(const Coordinate, const Coordinate,
+                              const Coordinate, Coordinate &, double &);
+
+double fcc_approximate_distance(const Coordinate, const Coordinate);
+
+double bearing(const Coordinate, const Coordinate);
+
+bool is_ccw(const Coordinate, const Coordinate, const Coordinate);
+
+Coordinate centroid(const Coordinate, const Coordinate);
+
+inline std::pair<double, FloatCoordinate>
+project_point_on_segment(const FloatCoordinate &, const FloatCoordinate &,
+                         const FloatCoordinate &);
 } // namespace coordinate_calculation
 } // namespace util
 } // namespace osram

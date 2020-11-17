@@ -301,7 +301,7 @@ public:
   }
 
   void write(std::string_view filename, char const *data, std::size_t size,
-             const std::chrono::system_clock::time_point &mtime) {
+             const std::chrono::system_clock::time_point mtime) {
     write(
         filename, [&](std::ostream &os) { os.write(data, size); }, size, mtime);
   }
@@ -427,7 +427,7 @@ private:
 
     if (!expected_fingerprint.is_data_compatible(loaded_fingerprint))
       throw std::runtime_error(
-          fmt::format("{} prepared with OSRM {}.{}.{} but this is {}", path,
+          fmt::format("{} prepared with OSRM {}.{}.{} but this is {}", path.string(),
                       loaded_fingerprint.get_major_version(),
                       loaded_fingerprint.get_minor_version(),
                       loaded_fingerprint.get_patch_version(), OSRAM_VERSION));
@@ -539,7 +539,7 @@ public:
   void write_from(std::string_view name, const T *data,
                   const std::size_t number_of_elements) {
     std::size_t number_of_bytes = number_of_elements * sizeof(T);
-    const auto now = std::chrono::steady_clock::now();
+    const auto now = std::chrono::system_clock::now();
     writer.write(name, reinterpret_cast<char const *>(data), number_of_bytes,
                  now);
   }

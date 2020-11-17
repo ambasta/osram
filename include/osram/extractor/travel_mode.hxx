@@ -6,19 +6,21 @@
 
 namespace osram {
 namespace extractor {
-using TravelMode = std::uint8_t;
-const constexpr osram::extractor::TravelMode TRAVEL_MODE_INACCESSIBLE = 0;
-const constexpr TravelMode TRAVEL_MODE_DRIVING = 1;
-const constexpr TravelMode TRAVEL_MODE_CYCLING = 2;
-const constexpr TravelMode TRAVEL_MODE_WALKING = 3;
-const constexpr TravelMode TRAVEL_MODE_FERRY = 4;
-const constexpr TravelMode TRAVEL_MODE_TRAIN = 5;
-const constexpr TravelMode TRAVEL_MODE_PUSHING_BIKE = 6;
-const constexpr TravelMode TRAVEL_MODE_STEPS_UP = 8;
-const constexpr TravelMode TRAVEL_MODE_STEPS_DOWN = 9;
-const constexpr TravelMode TRAVEL_MODE_RIVER_UP = 10;
-const constexpr TravelMode TRAVEL_MODE_RIVER_DOWN = 11;
-const constexpr TravelMode TRAVEL_MODE_ROUTE = 12;
+
+enum TravelMode {
+  TRAVEL_MODE_INACCESSIBLE = 0,
+  TRAVEL_MODE_DRIVING = 1,
+  TRAVEL_MODE_CYCLING = 2,
+  TRAVEL_MODE_WALKING = 3,
+  TRAVEL_MODE_FERRY = 4,
+  TRAVEL_MODE_TRAIN = 5,
+  TRAVEL_MODE_PUSHING_BIKE = 6,
+  TRAVEL_MODE_STEPS_UP = 8,
+  TRAVEL_MODE_STEPS_DOWN = 9,
+  TRAVEL_MODE_RIVER_UP = 10,
+  TRAVEL_MODE_RIVER_DOWN = 11,
+  TRAVEL_MODE_ROUTE = 12,
+};
 
 inline std::string travelmode_to_string(const TravelMode mode) {
   std::string token;
